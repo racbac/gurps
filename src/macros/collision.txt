@@ -1,0 +1,1 @@
+!injury Collision&&&@{target|token_id}&&&?{Damage Type|Crushing,cr|Piercing,pi|Cutting,cut|Impaling,imp}&&&?{Is the target immovable?|Yes,1|No,0}&&?{Is the target hard?|Yes,1|No,0}

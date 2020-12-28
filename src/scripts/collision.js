@@ -8,16 +8,14 @@
 /**
  * Calculate collision damage.
  * 
+ * @param {String} object_id Id of object of moving object/character.
  * @param {Number} velocity Moving object's velocity.
- * @param {Object} object Object of moving object/character.
+ * @param {'cr'|'pi'|'cut'|'imp'} damage_type Damage type.
  * @param {Boolean} isTargetImmovable Whether the collided object is immovable.
  * @param {Boolean} isTargetHard Whether the collided object is hard.
  */
-export function calcCollisionDamage(velocity, object, isTargetImmovable, isTargetHard) {
-  /**
-   * @todo How to query in API script.
-   */
-  let damage_type = query('?Damage Type|Crushing,cr|Piercing,pi|Cutting,cut|Impaling,imp');
+export function calcCollisionDamage(object_id, velocity, damage_type, isTargetImmovable, isTargetHard) {
+  const object = getObj('character', object_id);
   let damage_dice = getAttrByName((object.get('id'), 'hit_points', 'max') * (isTargetImmovable && isTargetHard) ? 2 : 1) * velocity / 100;
 
   if ('cr' !== damage_type) damage_dice /= 2;
